@@ -3,13 +3,13 @@ import logo from '../../assets/black-king.png'
 import {Cell} from "../Cell";
 
 export enum FigureNames {
-    FIGURE= "Фигура",
-    KING= "Король",
-    KNIGHT= "Конь",
-    PAWN= "Пешка",
-    QUEEN= "Ферзь",
-    ROOK= "Ладья",
-    BISHOP= "Слон"
+    FIGURE = "Фигура",
+    KING = "Король",
+    KNIGHT = "Конь",
+    PAWN = "Пешка",
+    QUEEN = "Ферзь",
+    ROOK = "Ладья",
+    BISHOP = "Слон"
 }
 
 export class Figure {
@@ -28,8 +28,10 @@ export class Figure {
         this.id = Math.random()
     }
 
-    canMove(target: Cell) : boolean {
-        return true;
+    canMove(target: Cell): boolean {
+        if (target.figure?.color === this.color)
+            return false
+        return target.figure?.name !== FigureNames.KING;
     }
 
     moveFigure(target: Cell) {
